@@ -1,30 +1,21 @@
-import apiClient from "@/Services/api-client";
+import useGames from "@/hooks/useGames";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
-import { useEffect, useState } from "react";
-interface Game {
-  id: number;
-  name: string;
-}
-interface GamesResponse {
-  count: number;
-  results: Game[];
-}
+import { styled } from "@mui/material/styles";
+
 const GameGrid = () => {
-  const [games, setGames] = useState<Game[]>([]);
-  const [error, setError] = useState("");
-  useEffect(() => {
-    apiClient
-      .get<GamesResponse>("/games")
-      .then((res) => {setGames(res.data.results);
-        setError('')
-      })
-      .catch((er) => {setError(er.response.data);
-        setGames([])
-      })
-      .finally();
-  });
+  const Item = styled(Paper)(({ theme }) => ({
+    backgroundColor: "#fff",
+    ...theme.typography.body2,
+    padding: theme.spacing(1),
+    textAlign: "center",
+    color: (theme.vars ?? theme).palette.text.secondary,
+    ...theme.applyStyles("dark", {
+      backgroundColor: "#1A2027",
+    }),
+  }));
+  const { games, error } = useGames();
   return (
     <div style={{ display: "flex" }}>
       {error.trim() && (
@@ -55,12 +46,9 @@ const GameGrid = () => {
           <Grid container>
             {games.map((game) => (
               <Grid size={3} key={game.id}>
-                <Paper
-                  
-                  elevation={20}
-                  sx={{ padding: 5, margin: 3 }}>
-                  <li>{game.name}</li>
-                </Paper>
+                <Item elevation={20} sx={{ padding: 5, margin: 3 }}>
+                  {game.name}
+                </Item>
               </Grid>
             ))}
           </Grid>
