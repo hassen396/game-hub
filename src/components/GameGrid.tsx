@@ -7,6 +7,8 @@ import Skeleton from "@mui/material/Skeleton";
 import Typography from "@mui/material/Typography";
 
 import PlatformIconList from "./PlatformIconList";
+import CriticScore from "./CriticScore";
+import Stack from "@mui/material/Stack";
 const GameGrid = () => {
   const { games, error, loading } = useGames();
   if (loading)
@@ -59,9 +61,15 @@ const GameGrid = () => {
               <Typography variant="body2" color="grey.100">
                 Rating: {game.rating}
               </Typography>
-              <PlatformIconList
-                platforms={game.parent_platforms.map((p) => p.platform)}
-              />
+              <Stack
+                direction="row"
+                justifyContent={"space-between"}
+                alignItems={"center"}>
+                <PlatformIconList
+                  platforms={game.parent_platforms.map((p) => p.platform)}
+                />
+                <CriticScore score={game.metacritic} />
+              </Stack>
             </CardContent>
           </Card>
         </Grid>
