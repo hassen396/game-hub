@@ -28,12 +28,15 @@ function ToggleColorMode() {
         justifyContent: "center",
         bgcolor: "background.default",
         color: "text.primary",
-        borderRadius: 1,
-        p: 3,
-        height: "10px",
+        // borderRadius: 10,
+        // p: 3,
+        pt: { xs: 2, sm: 2, md: 3 },
+        pr: { sm: 2, xs: 1, md: 4, lg: 6 },
+        // ml: 0,
+        // height: 12,
       }}>
       <FormControl>
-        <FormControl sx={{ minWidth: 120 }}>
+        <FormControl sx={{ minWidth: { xs: 90, sm: 100, md: 120 } }}>
           <InputLabel id="theme-select-label">Theme</InputLabel>
           <Select
             labelId="theme-select-label"
@@ -64,17 +67,18 @@ export default function AppBar() {
     <ThemeProvider theme={theme}>
       <div>
         <Stack
+          sx={{}}
           display={"flex"}
           justifyContent={"space-between"}
           direction="row"
           spacing={2}>
           <Toolbar>
-            <Link component={RouterLink} to={'/'}>
+            <Link component={RouterLink} to={"/"}>
               <Box
                 component={"img"}
                 src={logo}
                 sx={{
-                  height: { sm: 40, md: 60 },
+                  height: { sm: 40, md: 60, xs: 30 },
 
                   cursor: "pointer",
                   borderRadius: 12,

@@ -20,7 +20,7 @@ function App() {
           color: "text.primary",
         }}>
         <Grid size={{ xs: 12 }} sx={{}}>
-          <Box sx={{ color: "white", p: 2 }}>
+          <Box sx={{ position: "sticky", top: 0, zIndex: 1100 }}>
             <AppBar />
           </Box>
         </Grid>
@@ -37,7 +37,7 @@ function App() {
           <Grid size={{ xs: 12, lg: 9 }}>
             <Box
               sx={{
-                display: "flex",
+                // display: "flex",
 
                 //  bgcolor: "grey.700",
                 p: 2,
