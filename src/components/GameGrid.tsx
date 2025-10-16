@@ -6,7 +6,7 @@ import GameCard from "./GameCard";
 import GameCardSkeloton from "./GameCardSkeloton";
 import GameCardContainer from "./GameCardContainer";
 const GameGrid = () => {
-  const { games, error, loading } = useGames();
+  const { data: games, error, loading } = useGames();
   if (error)
     return (
       <Typography color="error" textAlign="center" mt={5}>
