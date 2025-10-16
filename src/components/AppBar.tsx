@@ -36,9 +36,10 @@ function ToggleColorMode() {
         // height: 12,
       }}>
       <FormControl>
-        <FormControl sx={{ minWidth: { xs: 90, sm: 100, md: 120 } }}>
+        <FormControl sx={{ minWidth: { xs: 90, sm: 120, md: 130 } }}>
           <InputLabel id="theme-select-label">Theme</InputLabel>
           <Select
+            sx={{ height: 30 }}
             labelId="theme-select-label"
             id="theme-select"
             value={mode}
