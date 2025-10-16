@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import { CssBaseline } from "@mui/material";
 import AppBar from "./components/AppBar";
 import GameGrid from "./components/GameGrid";
+import GenreList from "./components/GenreList";
 
 function App() {
   return (
@@ -32,7 +33,7 @@ function App() {
               // bgcolor: "grey.200",
               p: 2,
             }}>
-            Aside
+            <GenreList />
           </Grid>
           <Grid size={{ xs: 12, lg: 9 }}>
             <Box
