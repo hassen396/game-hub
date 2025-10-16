@@ -15,7 +15,7 @@ const GameCard = ({game}: Props) => {
         borderRadius: 3,
         overflow: "hidden",
         border: (theme) => (theme.palette.mode === "dark" ? 1 : 0),
-        maxWidth: 280,
+        // maxWidth: 280,
         mx: "auto",
       }}>
       <CardMedia

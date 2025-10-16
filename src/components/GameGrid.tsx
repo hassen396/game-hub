@@ -4,19 +4,9 @@ import Typography from "@mui/material/Typography";
 
 import GameCard from "./GameCard";
 import GameCardSkeloton from "./GameCardSkeloton";
+import GameCardContainer from "./GameCardContainer";
 const GameGrid = () => {
   const { games, error, loading } = useGames();
-  // if (loading)
-  //   return (
-  //     <Grid container justifyContent="space-evenly">
-  //       {/* {Array.from({ length: 16 }).map((_, i) => (
-  //         <Grid key={i}>
-  //           <GameCardSkeloton />
-  //         </Grid>
-  //       ))} */}
-  //     </Grid>
-  //   );
-
   if (error)
     return (
       <Typography color="error" textAlign="center" mt={5}>
@@ -28,14 +18,14 @@ const GameGrid = () => {
     <Grid container justifyContent="center" spacing={2}>
       {loading
         ? Array.from({ length: 16 }).map((_, i) => (
-            <Grid key={i}>
+            <GameCardContainer key={i}>
               <GameCardSkeloton />
-            </Grid>
+            </GameCardContainer>
           ))
         : games.map((game) => (
-            <Grid key={game.id}>
+            <GameCardContainer>
               <GameCard game={game} />
-            </Grid>
+            </GameCardContainer>
           ))}
     </Grid>
   );
