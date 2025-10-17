@@ -1,6 +1,5 @@
-import useGenres from "@/hooks/useGenres";
+import useGenres, { type Genre } from "@/hooks/useGenres";
 import Avatar from "@mui/material/Avatar";
-
 import List from "@mui/material/List";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import ListItem from "@mui/material/ListItem";
@@ -8,8 +7,12 @@ import ListItemText from "@mui/material/ListItemText";
 import getCropedImageUrl from "@/Services/image-url";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
+import Link from "@mui/material/Link";
 
-const GenreList = () => {
+interface Props {
+  onGenreSelect: (genre: Genre) => void;
+}
+const GenreList = ({ onGenreSelect }: Props) => {
   const { data: genres, loading, error } = useGenres();
   if (loading)
     return (
@@ -25,7 +28,22 @@ const GenreList = () => {
           <ListItemAvatar>
             <Avatar variant="square" sx={{ width: 50, height: 50, borderRadius: 2 }} src={getCropedImageUrl(genre.image_background)}></Avatar>
           </ListItemAvatar>
-          <ListItemText slotProps={{ primary: { sx: { fontSize: "1.1rem", fontWeight: 500 } } }} primary={genre.name}></ListItemText>
+          <ListItemText
+            primary={
+              <Link
+                component="button"
+                underline="hover"
+                onClick={() => onGenreSelect(genre)}
+                sx={{
+                  fontSize: "1.1rem",
+                  fontWeight: 500,
+                  color: "text.primary",
+                  "&:hover": { color: "primary.main" },
+                }}>
+                {genre.name}
+              </Link>
+            }
+          />
         </ListItem>
       ))}
     </List>

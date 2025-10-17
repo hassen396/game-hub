@@ -1,12 +1,16 @@
 import useGames from "@/hooks/useGames";
 import { Grid } from "@mui/material";
 import Typography from "@mui/material/Typography";
-
 import GameCard from "./GameCard";
 import GameCardSkeloton from "./GameCardSkeloton";
 import GameCardContainer from "./GameCardContainer";
-const GameGrid = () => {
-  const { data: games, error, loading } = useGames();
+import type { Genre } from "@/hooks/useGenres";
+
+interface Props {
+  selectedGenre: Genre | null;
+}
+const GameGrid = ({ selectedGenre }: Props) => {
+  const { data: games, error, loading } = useGames(selectedGenre);
   if (error)
     return (
       <Typography color="error" textAlign="center" mt={5}>
@@ -23,7 +27,7 @@ const GameGrid = () => {
             </GameCardContainer>
           ))
         : games.map(game => (
-            <GameCardContainer>
+            <GameCardContainer key={game.id}>
               <GameCard game={game} />
             </GameCardContainer>
           ))}
