@@ -30,12 +30,12 @@ function App() {
         </Grid>
         <Grid size={{ xs: 12 }} container>
           {/* Aside */}
-          <Grid container size={{ lg: 3 }} sx={{ display: { xs: "none", md: "none", lg: "block" }, p: 2 }}>
+          <Grid container size={{ lg: 2.5 }} sx={{ display: { xs: "none", lg: "block" }, p: 2 }}>
             <GenreList />
           </Grid>
 
           {/* Main */}
-          <Grid container size={{ sm: 12, xs: 12, lg: 9 }}>
+          <Grid container size={{ sm: 12, xs: 12, lg: 9.5 }}>
             <Box sx={{ p: 2, width: "100%" }}>
               <GameGrid />
             </Box>
