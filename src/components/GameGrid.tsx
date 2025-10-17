@@ -15,14 +15,14 @@ const GameGrid = () => {
     );
 
   return (
-    <Grid container justifyContent="center" spacing={2}>
+    <Grid container spacing={3}>
       {loading
         ? Array.from({ length: 16 }).map((_, i) => (
             <GameCardContainer key={i}>
               <GameCardSkeloton />
             </GameCardContainer>
           ))
-        : games.map((game) => (
+        : games.map(game => (
             <GameCardContainer>
               <GameCard game={game} />
             </GameCardContainer>

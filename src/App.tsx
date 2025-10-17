@@ -17,32 +17,26 @@ function App() {
           width: "100%",
           p: 0,
           flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
           bgcolor: "background.default",
           color: "text.primary",
         }}>
-        <Grid size={{ xs: 12 }} sx={{}}>
+        {/* Top Bar */}
+        <Grid size={{ xs: 12 }}>
           <Box sx={{ position: "sticky", top: 0, zIndex: 1100 }}>
             <AppBar />
           </Box>
         </Grid>
         <Grid size={{ xs: 12 }} container>
-          <Grid
-            size={{ lg: 2 }}
-            sx={{
-              display: { xs: "none", md: "none", lg: "block" },
-              // bgcolor: "grey.200",
-              p: 2,
-            }}>
+          {/* Aside */}
+          <Grid container size={{ lg: 3 }} sx={{ display: { xs: "none", md: "none", lg: "block" }, p: 2 }}>
             <GenreList />
           </Grid>
-          <Grid size={{ xs: 12, lg: 9 }}>
-            <Box
-              sx={{
-                // display: "flex",
 
-                //  bgcolor: "grey.700",
-                p: 2,
-              }}>
+          {/* Main */}
+          <Grid container size={{ sm: 12, xs: 12, lg: 9 }}>
+            <Box sx={{ p: 2, width: "100%" }}>
               <GameGrid />
             </Box>
           </Grid>
