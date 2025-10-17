@@ -39,7 +39,7 @@ function App() {
         <Grid size={{ xs: 12 }} container>
           {/* Aside */}
           <Grid container size={{ lg: 2.5 }} sx={{ display: { xs: "none", lg: "block" }, p: 2 }}>
-            <GenreList onGenreSelect={onGenreSelect} />
+            <GenreList onGenreSelect={onGenreSelect} selectedGenre={selectedGenre} />
           </Grid>
 
           {/* Main */}

@@ -11,8 +11,9 @@ import Link from "@mui/material/Link";
 
 interface Props {
   onGenreSelect: (genre: Genre) => void;
+  selectedGenre?: Genre | null;
 }
-const GenreList = ({ onGenreSelect }: Props) => {
+const GenreList = ({ onGenreSelect, selectedGenre }: Props) => {
   const { data: genres, loading, error } = useGenres();
   if (loading)
     return (
@@ -35,8 +36,8 @@ const GenreList = ({ onGenreSelect }: Props) => {
                 underline="hover"
                 onClick={() => onGenreSelect(genre)}
                 sx={{
-                  fontSize: "1.1rem",
-                  fontWeight: 500,
+                  fontSize: selectedGenre?.id == genre.id ? "1.5rem" : "1.1rem",
+                  fontWeight: selectedGenre?.id == genre.id ? 900 : 500,
                   color: "text.primary",
                   "&:hover": { color: "primary.main" },
                 }}>
