@@ -1,16 +1,18 @@
-import useGames from "@/hooks/useGames";
-import { Grid } from "@mui/material";
-import Typography from "@mui/material/Typography";
-import GameCard from "./GameCard";
-import GameCardSkeloton from "./GameCardSkeloton";
 import GameCardContainer from "./GameCardContainer";
-import type { Genre } from "@/hooks/useGenres";
+import Typography from "@mui/material/Typography";
+import GameCardSkeloton from "./GameCardSkeloton";
+import type { GameQuery } from "@/App";
+import { Grid } from "@mui/material";
+import GameCard from "./GameCard";
+import useGames from "@/hooks/useGames";
 
 interface Props {
-  selectedGenre: Genre | null;
+  gameQuery: GameQuery;
+  // selectedGenre: Genre | null;
+  // selectedPlatform: Platform | null;
 }
-const GameGrid = ({ selectedGenre }: Props) => {
-  const { data: games, error, loading } = useGames(selectedGenre);
+const GameGrid = ({ gameQuery }: Props) => {
+  const { data: games, error, loading } = useGames(gameQuery);
   if (error)
     return (
       <Typography color="error" textAlign="center" mt={5}>

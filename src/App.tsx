@@ -8,14 +8,23 @@ import GenreList from "./components/GenreList";
 import { useState } from "react";
 import type { Genre } from "./hooks/useGenres";
 import PlatformSelector from "./components/PlatformSelector";
+import type { Platform } from "./hooks/useGames";
 
+export interface GameQuery {
+  platform: Platform | null;
+  genre: Genre | null;
+}
 function App() {
-  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+  // const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+  // const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(null);
+  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
   const onGenreSelect = (genre: Genre) => {
-    setSelectedGenre(genre);
+    setGameQuery({ ...gameQuery, genre: genre });
   };
-  console.log(selectedGenre);
-
+  const handlePlatformChange = (platform: Platform | null) => {
+    setGameQuery({ ...gameQuery, platform: platform });
+  };
+  console.log(gameQuery);
   return (
     <>
       <CssBaseline />
@@ -40,14 +49,14 @@ function App() {
         <Grid size={{ xs: 12 }} container>
           {/* Aside */}
           <Grid container size={{ lg: 2.5 }} sx={{ display: { xs: "none", lg: "block" }, p: 2 }}>
-            <GenreList onGenreSelect={onGenreSelect} selectedGenre={selectedGenre} />
+            <GenreList onGenreSelect={onGenreSelect} selectedGenre={gameQuery.genre} />
           </Grid>
 
           {/* Main */}
           <Grid container size={{ sm: 12, xs: 12, lg: 9.5 }}>
             <Box sx={{ p: 2, width: "100%" }}>
-              <PlatformSelector />
-              <GameGrid selectedGenre={selectedGenre} />
+              <PlatformSelector onPlatformChange={handlePlatformChange} platform={gameQuery.platform} />
+              <GameGrid gameQuery={gameQuery} />
             </Box>
           </Grid>
         </Grid>
