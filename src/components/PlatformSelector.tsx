@@ -12,7 +12,7 @@ interface Props {
 const PlatformSelector = ({ onPlatformChange, platform }: Props) => {
   const { data: platforms, error } = usePlatforms();
 
-  const handleChange = (event: SelectChangeEvent<string>) => {
+  const handlePlatformChange = (event: SelectChangeEvent<string>) => {
     const selectedId = event.target.value;
     const platform: Platform | null = platforms.find(p => p.id === Number(selectedId)) || null;
     onPlatformChange(platform);
@@ -23,8 +23,7 @@ const PlatformSelector = ({ onPlatformChange, platform }: Props) => {
       <Select
         displayEmpty
         input={<OutlinedInput />}
-        onChange={handleChange}
-        labelId="select-platform-label"
+        onChange={handlePlatformChange}
         id="platform-select"
         value={platform?.id.toString() || ""}
         label="Platforms">

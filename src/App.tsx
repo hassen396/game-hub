@@ -14,6 +14,7 @@ import Stack from "@mui/material/Stack";
 export interface GameQuery {
   platform: Platform | null;
   genre: Genre | null;
+  sortOrder: string;
 }
 function App() {
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
@@ -23,7 +24,6 @@ function App() {
   const handlePlatformChange = (platform: Platform | null) => {
     setGameQuery({ ...gameQuery, platform: platform });
   };
-  console.log(gameQuery);
   return (
     <>
       <CssBaseline />
@@ -56,7 +56,7 @@ function App() {
             <Box sx={{ p: 2, width: "100%" }}>
               <Stack minWidth={50} direction="row" spacing={1} marginBottom={5}>
                 <PlatformSelector onPlatformChange={handlePlatformChange} platform={gameQuery.platform} />
-                <SortSelector />
+                <SortSelector sortOrder={gameQuery.sortOrder} onSelectOrder={order => setGameQuery({ ...gameQuery, sortOrder: order })} />
               </Stack>
               <GameGrid gameQuery={gameQuery} />
             </Box>
