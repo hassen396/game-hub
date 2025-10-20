@@ -1,8 +1,8 @@
 import type { Platform } from "@/hooks/useGames";
 import usePlatforms from "@/hooks/usePlatforms";
 import FormControl from "@mui/material/FormControl";
-import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
+import OutlinedInput from "@mui/material/OutlinedInput";
 import Select, { type SelectChangeEvent } from "@mui/material/Select";
 
 interface Props {
@@ -19,13 +19,13 @@ const PlatformSelector = ({ onPlatformChange, platform }: Props) => {
   };
   if (error) return null;
   return (
-    <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-      <InputLabel id="select-platform-label"></InputLabel>
+    <FormControl sx={{ minWidth: { sm: 120, md: 160 } }} size="small">
       <Select
+        displayEmpty
+        input={<OutlinedInput />}
         onChange={handleChange}
         labelId="select-platform-label"
         id="platform-select"
-        displayEmpty
         value={platform?.id.toString() || ""}
         label="Platforms">
         <MenuItem value="">
