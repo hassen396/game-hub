@@ -49,12 +49,12 @@ function App() {
         </Grid>
         <Grid size={{ xs: 12 }} container>
           {/* Aside */}
-          <Grid container size={{ lg: 2.5 }} sx={{ display: { xs: "none", lg: "block" }, p: 2 }}>
+          <Grid container size={{ lg: 2 }} sx={{ display: { xs: "none", lg: "block" }, p: 2 }}>
             <GenreList onGenreSelect={onGenreSelect} selectedGenre={gameQuery.genre} />
           </Grid>
 
           {/* Main */}
-          <Grid container size={{ sm: 12, xs: 12, lg: 9.5 }}>
+          <Grid container size={{ sm: 12, xs: 12, lg: 10 }}>
             <Box sx={{ p: 2, width: "100%" }}>
               <GameHeading gamequery={gameQuery} />
               <Stack minWidth={50} direction="row" spacing={1} marginBottom={5}>
