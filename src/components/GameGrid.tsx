@@ -21,7 +21,7 @@ const GameGrid = ({ gameQuery }: Props) => {
     );
 
   return (
-    <Grid container spacing={3}>
+    <Grid container spacing={5}>
       {loading
         ? Array.from({ length: 16 }).map((_, i) => (
             <GameCardContainer key={i}>

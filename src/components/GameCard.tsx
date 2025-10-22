@@ -18,15 +18,15 @@ const GameCard = ({ game }: Props) => {
       }}>
       <CardMedia component="img" image={getCropedImageUrl(game.background_image) || "/placeholder.png"} alt={game.name} sx={{ objectFit: "cover" }} />
       <CardContent>
+        <Stack mb={1} direction="row" justifyContent={"space-between"} alignItems={"center"}>
+          <PlatformIconList platforms={game.parent_platforms?.map(p => p.platform) || []} />
+          <CriticScore score={game.metacritic} />
+        </Stack>
         <Typography variant="h6" fontWeight="bold" gutterBottom noWrap>
           {game.name}
         </Typography>
         <Typography variant="body2">Released: {game.released}</Typography>
         <Typography variant="body2">Rating: {game.rating}</Typography>
-        <Stack direction="row" justifyContent={"space-between"} alignItems={"center"}>
-          <PlatformIconList platforms={game.parent_platforms?.map(p => p.platform) || []} />
-          <CriticScore score={game.metacritic} />
-        </Stack>
       </CardContent>
     </Card>
   );

@@ -56,8 +56,10 @@ function App() {
           {/* Main */}
           <Grid container size={{ sm: 12, xs: 12, lg: 10 }}>
             <Box sx={{ p: 2, width: "100%" }}>
-              <GameHeading gamequery={gameQuery} />
-              <Stack minWidth={50} direction="row" spacing={1} marginBottom={5}>
+              <Stack justifyContent="center" minWidth={50} direction="row" marginBottom={2}>
+                <GameHeading gamequery={gameQuery} />
+              </Stack>
+              <Stack justifyContent="center" minWidth={50} direction="row" spacing={1} marginBottom={5}>
                 <PlatformSelector onPlatformChange={handlePlatformChange} platform={gameQuery.platform} />
                 <SortSelector sortOrder={gameQuery.sortOrder} onSelectOrder={order => setGameQuery({ ...gameQuery, sortOrder: order })} />
               </Stack>
