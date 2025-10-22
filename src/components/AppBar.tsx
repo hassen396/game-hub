@@ -25,12 +25,6 @@ function ToggleColorMode() {
         bgcolor: "background.default",
         color: "text.primary",
         px: 2,
-        // borderRadius: 10,
-        // p: 3,
-        // pt: { xs: 2, sm: 2, md: 3 },
-        // pr: { sm: 2, xs: 1, md: 4, lg: 6 },
-        // ml: 0,
-        // height: 12,
       }}>
       <FormControl>
         <FormControl sx={{ minWidth: { xs: 90, sm: 120, md: 130 } }}>

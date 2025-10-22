@@ -10,6 +10,7 @@ import type { Platform } from "./hooks/useGames";
 import SortSelector from "./components/SortSelector";
 import CssBaseline from "@mui/material/CssBaseline";
 import Stack from "@mui/material/Stack";
+import GameHeading from "./components/GameHeading";
 
 export interface GameQuery {
   platform: Platform | null;
@@ -55,6 +56,7 @@ function App() {
           {/* Main */}
           <Grid container size={{ sm: 12, xs: 12, lg: 9.5 }}>
             <Box sx={{ p: 2, width: "100%" }}>
+              <GameHeading gamequery={gameQuery} />
               <Stack minWidth={50} direction="row" spacing={1} marginBottom={5}>
                 <PlatformSelector onPlatformChange={handlePlatformChange} platform={gameQuery.platform} />
                 <SortSelector sortOrder={gameQuery.sortOrder} onSelectOrder={order => setGameQuery({ ...gameQuery, sortOrder: order })} />
