@@ -15,6 +15,7 @@ export interface GameQuery {
   platform: Platform | null;
   genre: Genre | null;
   sortOrder: string;
+  searchtext: string;
 }
 function App() {
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
@@ -42,7 +43,7 @@ function App() {
         {/* Top Bar */}
         <Grid size={{ xs: 12 }}>
           <Box sx={{ position: "sticky", top: 0, zIndex: 1100 }}>
-            <AppBar />
+            <AppBar onSearch={st => setGameQuery({ ...gameQuery, searchtext: st })} />
           </Box>
         </Grid>
         <Grid size={{ xs: 12 }} container>

@@ -24,7 +24,7 @@ const GameCard = ({ game }: Props) => {
         <Typography variant="body2">Released: {game.released}</Typography>
         <Typography variant="body2">Rating: {game.rating}</Typography>
         <Stack direction="row" justifyContent={"space-between"} alignItems={"center"}>
-          <PlatformIconList platforms={game.parent_platforms.map(p => p.platform)} />
+          <PlatformIconList platforms={game.parent_platforms?.map(p => p.platform) || []} />
           <CriticScore score={game.metacritic} />
         </Stack>
       </CardContent>
